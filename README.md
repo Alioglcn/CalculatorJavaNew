@@ -1,7 +1,3 @@
-
-
-
-
 # Giris
 
 Bu doküman, Özgür Yazılım A.S. için staj başvurum kapsamında, Java dilinde iki tam sayıyı toplayan bir fonksiyonun ve bu fonksiyon için yazılan birim testlerin detaylarını içermektedir.
@@ -38,6 +34,8 @@ Aynı zamanda, test içerisinde assertion metodları yani beklenen ve gerçekle�
 
 ```java
 import static org.junit.Assert.*;
+
+import org.example.Calculator;
 import org.junit.Test;
 
 public class CalculatorTest {
@@ -68,6 +66,33 @@ public class CalculatorTest {
                 Integer.MIN_VALUE, Calculator.sum(Integer.MAX_VALUE, 1));
     }
 
+    @Test
+    public void testAdd_MinValue() {
+        assertEquals("Integer.MIN_VALUE + 1 should be Integer.MIN_VALUE + 1",
+                Integer.MIN_VALUE + 1, Calculator.sum(Integer.MIN_VALUE, 1));
+    }
+
+    @Test
+    public void testAdd_ZeroWithPositiveNumber() {
+        assertEquals("0 + 5 should equal 5", 5, Calculator.sum(0, 5));
+    }
+
+    @Test
+    public void testAdd_ZeroWithNegativeNumber() {
+        assertEquals("0 + -5 should equal -5", -5, Calculator.sum(0, -5));
+    }
+
+    @Test
+    public void testAdd_LargeNegativeNumbers() {
+        assertEquals("Integer.MIN_VALUE + Integer.MIN_VALUE should be -2 * Integer.MIN_VALUE",
+                -2 * Integer.MIN_VALUE, Calculator.sum(Integer.MIN_VALUE, Integer.MIN_VALUE));
+    }
+
+    
+    @Test
+    public void testSum_MethodNameCorrection() {
+        assertEquals("Method name should be sum, not add", 30, Calculator.sum(10, 20));
+    }
 }
 ```
 
@@ -94,6 +119,25 @@ Burada, fonksiyon 0 değerlerini aldığında nasıl tepki verdiğini test ediyo
 
 Burada daha farklı olarak, fonksiyonun overflow(taşma) durumunu test etmekteyiz. Eğer fonksiyon en büyük tam sayıyı bir parametre olarak alırsa, kesinlikle bir taşma gerçekleşecektir ve sonrasında fonksiyon küçük bir tam sayı döndürecektir.
 
+## testAdd_MinValue()
+
+Minimum değeri bir artırarak, Integer.MIN_VALUE'e 1 eklenince beklenen sonucun elde edilmesini test ediyoruz
+
+## testAdd_ZeroWithPositiveNumber()
+
+Sıfır ile pozitif bir sayı toplandığında, sonuç pozitif sayı olmalıdır. Bu testte 0 ile 5'in toplamı kontrol ediliyor
+
+## testAdd_ZeroWithNegativeNumber()
+
+Sıfır ile negatif bir sayı toplandığında, sonuç negatif sayı olmalıdır. Testte 0 ile -5'in toplamı kontrol ediliyor
+
+## testAdd_LargeNegativeNumbers()
+
+Çok büyük negatif sayılar toplandığında, sonuç -2 * Integer.MIN_VALUE olmalıdır. Bu testte Integer.MIN_VALUE ile Integer.MIN_VALUE'in toplamı kontrol ediliyor
+
+## testSum_MethodNameCorrection()
+
+Bu testi daha sıradışı syntax hataları için düşünebiliriz. Test, method adının doğru olup olmadığını kontrol ediyor
 
 # Testlerin Çalıstırılması
 
