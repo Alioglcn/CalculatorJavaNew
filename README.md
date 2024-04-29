@@ -164,7 +164,7 @@ Tek yapmamız gereken, JUnit kütüphanesinin entegrasyonunu yapmaktır.
 
 CalculatorTest fonksiyonunu çalıstırdığımızda ise asağıdaki çıktıyı alıyoruz:
 
-<img src = "result.png">
+<img src = "consoleScripts.jpg">
 
 
 
