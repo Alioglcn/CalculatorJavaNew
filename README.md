@@ -143,6 +143,8 @@ Bu testi daha sıradışı syntax hataları için düşünebiliriz. Test, method
 
 Testleri iki farklı yöntem ile çalıştırabiliriz.
 
+**Not:** Fonksiyona null testi uygulayamadım çünkü fonksiyonda ilkel tip parametreler kullandım (int number1, int number2). Integer gibi daha ileri seviye veri tipi kullansaydım null değerler için de unit testler oluşturabilirdim ancak fonksiyonumuz daha güvensiz hale gelebilirdi.(NullException hatalarına açık olurdu)
+
 ## 1. Yöntem - Lokalde Çalıstırmak
 
 Bu yöntem ile fonksiyon üzerinden hızlıca testleri çalıştırabiliriz bu sayede hızlı geribildirim alabiliriz. 
